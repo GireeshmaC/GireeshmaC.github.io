@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gireeshma Kodali — AI/ML & Data Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0F6E56;
+    --teal-light: #E1F5EE;
+    --teal-mid: #1D9E75;
+    --teal-dark: #085041;
+    --cream: #FAF9F6;
+    --ink: #1C1C1A;
+    --ink2: #3A3A37;
+    --ink3: #6B6B67;
+    --ink4: #9B9B97;
+    --border: rgba(28,28,26,0.10);
+    --border2: rgba(28,28,26,0.06);
+    --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,249,246,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-brand { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--ink3); font-size: 0.875rem; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* HERO */
+  .hero {
+    max-width: 1100px; margin: 0 auto; padding: 7rem 2rem 5rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--teal); background: var(--teal-light);
+    padding: 4px 14px; border-radius: 100px; margin-bottom: 1.25rem;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    line-height: 1.1; color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--teal); }
+  .hero-sub {
+    font-size: 1.05rem; color: var(--ink3); line-height: 1.75;
+    max-width: 440px; margin-bottom: 2rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--teal); color: #fff;
+    text-decoration: none; font-size: 0.9rem; font-weight: 500;
+    padding: 12px 24px; border-radius: 8px; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--teal-dark); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: var(--ink2);
+    text-decoration: none; font-size: 0.9rem; font-weight: 400;
+    padding: 12px 24px; border-radius: 8px; border: 1px solid var(--border);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-secondary:hover { border-color: rgba(28,28,26,0.25); background: var(--white); }
+
+  /* HERO RIGHT — stat cards */
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .stat-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.4rem 1.4rem 1.2rem;
+  }
+  .stat-card .num {
+    font-family: 'DM Serif Display', serif; font-size: 2.2rem; color: var(--ink);
+    line-height: 1; margin-bottom: 4px;
+  }
+  .stat-card .num span { color: var(--teal); }
+  .stat-card .lbl { font-size: 0.8rem; color: var(--ink4); font-weight: 400; }
+  .stat-card.accent { background: var(--teal); border-color: var(--teal); }
+  .stat-card.accent .num { color: #fff; }
+  .stat-card.accent .lbl { color: rgba(255,255,255,0.7); }
+
+  /* SECTION WRAPPER */
+  section { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
+  .section-label {
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.2; color: var(--ink); margin-bottom: 3rem;
+  }
+
+  /* DIVIDER */
+  hr.divider { border: none; border-top: 1px solid var(--border); max-width: 1100px; margin: 0 auto; }
+
+  /* EXPERIENCE */
+  .exp-grid { display: grid; gap: 1.5rem; }
+  .exp-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem;
+    display: grid; grid-template-columns: auto 1fr; gap: 1.5rem;
+  }
+  .exp-dot {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--teal-light); display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .exp-dot svg { width: 20px; height: 20px; stroke: var(--teal); fill: none; stroke-width: 1.8; }
+  .exp-role { font-weight: 500; font-size: 1rem; color: var(--ink); }
+  .exp-org { font-size: 0.88rem; color: var(--teal); font-weight: 500; }
+  .exp-date { font-size: 0.8rem; color: var(--ink4); margin-bottom: 0.75rem; }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li {
+    font-size: 0.9rem; color: var(--ink3); padding: 4px 0 4px 1.1rem; position: relative; line-height: 1.6;
+  }
+  .exp-bullets li::before {
+    content: ''; position: absolute; left: 0; top: 13px;
+    width: 5px; height: 5px; border-radius: 50%; background: var(--teal-mid);
+  }
+  .exp-tag {
+    display: inline-block; font-size: 0.72rem; font-weight: 500;
+    background: var(--teal-light); color: var(--teal);
+    border-radius: 100px; padding: 3px 10px; margin: 3px 3px 0 0;
+  }
+  .exp-tags { margin-top: 0.75rem; }
+
+  /* PAPER HIGHLIGHT */
+  .paper-card {
+    background: var(--ink); border-radius: 20px; padding: 2.5rem;
+    display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center;
+  }
+  .paper-card .paper-label { font-size: 0.78rem; color: var(--teal-mid); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .paper-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.45rem; color: #fff; line-height: 1.3; margin-bottom: 0.75rem; }
+  .paper-card p { font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+  .paper-badge {
+    background: var(--teal); color: #fff;
+    font-size: 0.78rem; font-weight: 500;
+    border-radius: 8px; padding: 10px 18px; white-space: nowrap;
+    text-align: center;
+  }
+  .paper-badge .acc { font-size: 1.4rem; font-family: 'DM Serif Display', serif; display: block; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+  .skill-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.5rem;
+  }
+  .skill-card-title {
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink4); margin-bottom: 0.85rem; display: flex; align-items: center; gap: 8px;
+  }
+  .skill-card-title .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill {
+    font-size: 0.8rem; color: var(--ink2); background: var(--cream);
+    border: 1px solid var(--border); border-radius: 100px; padding: 4px 12px;
+  }
+
+  /* PROJECTS */
+  .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
+  .proj-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.75rem; display: flex; flex-direction: column; gap: 0.85rem;
+  }
+  .proj-num { font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--border); line-height: 1; }
+  .proj-title { font-weight: 500; font-size: 1rem; color: var(--ink); }
+  .proj-desc { font-size: 0.88rem; color: var(--ink3); line-height: 1.6; flex: 1; }
+
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .edu-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.75rem;
+  }
+  .edu-degree { font-weight: 500; font-size: 1rem; color: var(--ink); margin-bottom: 2px; }
+  .edu-school { font-size: 0.88rem; color: var(--teal); font-weight: 500; margin-bottom: 2px; }
+  .edu-date { font-size: 0.8rem; color: var(--ink4); margin-bottom: 1rem; }
+  .edu-courses { font-size: 0.8rem; color: var(--ink3); }
+  .edu-courses strong { color: var(--ink2); }
+
+  /* CERTS */
+  .certs-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .cert-pill {
+    font-size: 0.82rem; color: var(--ink2);
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 100px; padding: 6px 16px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.5);
+    padding: 3rem 2rem; text-align: center;
+    font-size: 0.85rem; margin-top: 4rem;
+  }
+  footer a { color: var(--teal-mid); text-decoration: none; }
+  footer .footer-name { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem; }
+  footer .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin: 1rem 0 1.5rem; }
+
+  /* CONTACT STRIP */
+  .contact-strip {
+    background: var(--teal); border-radius: 20px; padding: 3rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+  }
+  .contact-strip h2 { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: #fff; }
+  .contact-strip p { font-size: 0.9rem; color: rgba(255,255,255,0.75); margin-top: 4px; }
+  .btn-white {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; color: var(--teal);
+    text-decoration: none; font-size: 0.9rem; font-weight: 500;
+    padding: 12px 24px; border-radius: 8px; transition: background 0.15s;
+    white-space: nowrap;
+  }
+  .btn-white:hover { background: var(--cream); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding: 4rem 1.5rem 3rem; }
+    .hero-stats { order: -1; grid-template-columns: 1fr 1fr; }
+    .exp-card { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .paper-card { grid-template-columns: 1fr; }
+    nav { padding: 0 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    section { padding: 3.5rem 1.5rem; }
+    .contact-strip { padding: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">Gireeshma Kodali</a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <span class="hero-eyebrow">Open to Full-Time Roles · USA</span>
+    <h1>AI/ML &amp; Data<br><em>Engineering</em><br>Professional</h1>
+    <p class="hero-sub">
+      M.S. Computer Science · Old Dominion University. Building end-to-end pipelines, fine-tuning LLMs, and turning messy real-world data into decisions that matter.
+    </p>
+    <div class="hero-actions">
+      <a href="mailto:gireeshmachowdary@gmail.com" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        Get in touch
+      </a>
+      <a href="https://www.linkedin.com/in/gireeshma-kodali-bb578b1ab" target="_blank" class="btn-secondary">
+        LinkedIn ↗
+      </a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="num">87<span>%</span></div>
+      <div class="lbl">Diagnostic accuracy — sepsis detection model</div>
+    </div>
+    <div class="stat-card accent">
+      <div class="num">11B</div>
+      <div class="lbl">Parameter LLaMA model fine-tuned for edge deployment</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">2<span>+</span></div>
+      <div class="lbl">Years hands-on data &amp; AI/ML experience</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">15<span>%</span></div>
+      <div class="lbl">Program engagement increase via data-driven dashboards</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Where I've worked</p>
+  <h2 class="section-title">Professional Experience</h2>
+
+  <!-- Research Intern -->
+  <div class="exp-grid">
+    <div class="exp-card">
+      <div>
+        <div class="exp-dot">
+          <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+      </div>
+      <div>
+        <div class="exp-role">Research Intern — Generative AI in Medical Diagnostics</div>
+        <div class="exp-org">Old Dominion University</div>
+        <div class="exp-date">September 2025 – Present · Norfolk, VA</div>
+        <ul class="exp-bullets">
+          <li>Engineered a COMPOSER-LLM sepsis detection pipeline integrating RAG-augmented LLMs with structured EHR data and unstructured clinical notes, achieving ~87% diagnostic accuracy and reducing false positives in clinical alert systems.</li>
+          <li>Fine-tuned an 11B-parameter LLaMA model on multimodal medical data (imaging, sensor feeds, EHRs), applying pruning, quantization, and layer fusion to deploy on NVIDIA Jetson and Raspberry Pi edge hardware with minimal accuracy loss.</li>
+          <li>Built end-to-end Python data pipelines for preprocessing multimodal inputs — medical images via OpenCV, NLP tokenization via TinyBERT, IoT sensor streams — integrating GANs for synthetic data augmentation.</li>
+          <li>Co-authoring a research paper validating that a compressed Llama-3 model matches cloud-level diagnostic performance, making LLMs viable for real-world clinical edge deployment.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Python</span><span class="exp-tag">LLaMA 3</span><span class="exp-tag">RAG</span><span class="exp-tag">LLMs</span><span class="exp-tag">GANs</span><span class="exp-tag">OpenCV</span><span class="exp-tag">TinyBERT</span><span class="exp-tag">Azure Databricks</span><span class="exp-tag">Jupyter</span><span class="exp-tag">Edge AI</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grad Assistant Data Analytics -->
+    <div class="exp-card">
+      <div>
+        <div class="exp-dot">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+      </div>
+      <div>
+        <div class="exp-role">Graduate Assistant — Data Analytics &amp; Operations</div>
+        <div class="exp-org">Old Dominion University</div>
+        <div class="exp-date">August 2024 – May 2025 · Norfolk, VA</div>
+        <ul class="exp-bullets">
+          <li>Designed and maintained Python and SQL ETL pipelines consolidating student engagement data from multiple source systems into a unified analytics layer, reducing manual reporting effort significantly.</li>
+          <li>Built automated Tableau and Excel dashboards tracking inventory, volunteer participation, and program outcomes — contributing to a 15% increase in program engagement through data-informed decision-making.</li>
+          <li>Partnered with cross-functional campus offices to define KPIs, document data requirements, and design recurring report templates, translating stakeholder needs into structured data workflows.</li>
+          <li>Modeled inventory and consumption patterns for campus food pantry operations, identifying usage trends and informing resource allocation decisions.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Python</span><span class="exp-tag">SQL</span><span class="exp-tag">ETL Pipelines</span><span class="exp-tag">Tableau</span><span class="exp-tag">Excel</span><span class="exp-tag">Data Modeling</span><span class="exp-tag">KPI Design</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cloud Intern -->
+    <div class="exp-card">
+      <div>
+        <div class="exp-dot">
+          <svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+        </div>
+      </div>
+      <div>
+        <div class="exp-role">Cloud Computing Intern</div>
+        <div class="exp-org">FXIII Technologies</div>
+        <div class="exp-date">August 2021 – November 2021 · Remote</div>
+        <ul class="exp-bullets">
+          <li>Built an AWS-based data pipeline (EC2 + S3) to transform raw reservation and transactional logs into warehouse-ready datasets, reducing reporting latency and enabling faster operational insights.</li>
+          <li>Conducted exploratory data analysis on Indian Railway usage data using Python (Pandas, Seaborn), identifying seasonal demand trends, peak usage periods, and underutilized routes.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">AWS (EC2, S3)</span><span class="exp-tag">Python</span><span class="exp-tag">Pandas</span><span class="exp-tag">Seaborn</span><span class="exp-tag">EDA</span><span class="exp-tag">Data Pipelines</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Paper highlight -->
+  <div style="margin-top: 2rem;">
+    <div class="paper-card">
+      <div>
+        <div class="paper-label">Research Publication (in progress)</div>
+        <h3>Generative AI-Based Medical Diagnostic Tool for Edge Deployments</h3>
+        <p>Multi-modal generative AI diagnostic system for edge deployment in low-resource healthcare settings. Integrates vision, sensor, and NLP data to assist clinicians in real-time. Demonstrates that compressed Llama-3 models achieve performance comparable to cloud-based solutions while preserving data privacy.</p>
+      </div>
+      <div class="paper-badge">
+        <span class="acc">~87%</span>
+        Diagnostic<br>Accuracy
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">What I work with</p>
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-title"><span class="dot"></span>Languages &amp; Platforms</div>
+      <div class="skill-pills">
+        <span class="pill">Python</span><span class="pill">SQL</span><span class="pill">JavaScript</span><span class="pill">AWS</span><span class="pill">Azure Databricks</span><span class="pill">Azure Data Studio</span><span class="pill">IBM Cloud</span><span class="pill">Jupyter Notebook</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><span class="dot"></span>Data Engineering</div>
+      <div class="skill-pills">
+        <span class="pill">ETL Pipeline Design</span><span class="pill">Data Modeling</span><span class="pill">Data Warehousing</span><span class="pill">Data Quality</span><span class="pill">Data Integration</span><span class="pill">PySpark</span><span class="pill">Pandas</span><span class="pill">NumPy</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><span class="dot"></span>AI / ML</div>
+      <div class="skill-pills">
+        <span class="pill">LLM Fine-tuning</span><span class="pill">RAG Pipelines</span><span class="pill">GANs</span><span class="pill">Model Compression</span><span class="pill">NLP Preprocessing</span><span class="pill">Feature Engineering</span><span class="pill">CNNs</span><span class="pill">Federated Learning</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><span class="dot"></span>Databases</div>
+      <div class="skill-pills">
+        <span class="pill">MySQL</span><span class="pill">PostgreSQL</span><span class="pill">Oracle</span><span class="pill">MongoDB</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><span class="dot"></span>Analytics &amp; Visualization</div>
+      <div class="skill-pills">
+        <span class="pill">Tableau</span><span class="pill">Power BI</span><span class="pill">Matplotlib</span><span class="pill">Seaborn</span><span class="pill">Excel</span><span class="pill">Statistical Analysis</span><span class="pill">Predictive Modeling</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><span class="dot"></span>Professional</div>
+      <div class="skill-pills">
+        <span class="pill">Stakeholder Communication</span><span class="pill">Cross-functional Collaboration</span><span class="pill">Technical Documentation</span><span class="pill">Requirements Gathering</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">Things I've built</p>
+  <h2 class="section-title">Projects</h2>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <div class="proj-num">01</div>
+      <div class="proj-title">Formula 1 Drivers' Standings &amp; Track Performance Analysis</div>
+      <p class="proj-desc">Combined multi-origin datasets (Kaggle race results + web-scraped track data) spanning 70+ years. Built an interactive Tableau dashboard with drill-down exploration of driver standings, lap times, pit stop strategies, and circuit-level performance comparisons. Implemented derived metrics including lap delta, points-per-race efficiency, and track performance index.</p>
+      <div class="exp-tags">
+        <span class="exp-tag">Tableau</span><span class="exp-tag">Python</span><span class="exp-tag">Pandas</span><span class="exp-tag">Web Scraping</span><span class="exp-tag">Data Visualization</span>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">02</div>
+      <div class="proj-title">Irish Potato Leaf Disease Classifier</div>
+      <p class="proj-desc">Built a full preprocessing and labeling pipeline using OpenCV for image standardization, normalization, and augmentation. Trained a CNN-based image classifier with precision, recall, F1, and confusion matrix evaluation. Achieved a 12% accuracy improvement over baseline through iterative pipeline tuning.</p>
+      <div class="exp-tags">
+        <span class="exp-tag">Python</span><span class="exp-tag">OpenCV</span><span class="exp-tag">CNN</span><span class="exp-tag">Computer Vision</span><span class="exp-tag">Image Classification</span>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">03</div>
+      <div class="proj-title">Smart Waste Management System</div>
+      <p class="proj-desc">IBM Hackathon project. Designed a live IoT data ingestion pipeline streaming bin fill sensor events via MQTT into IBM Watson and IBM Cloud Object Storage — monitoring 100s of collection points city-scale. Built relational schemas for route optimization and automated capacity alerts.</p>
+      <div class="exp-tags">
+        <span class="exp-tag">IBM Cloud</span><span class="exp-tag">MQTT</span><span class="exp-tag">IoT</span><span class="exp-tag">IBM Watson</span><span class="exp-tag">Real-time Pipelines</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-label">Academic background</p>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-degree">Master of Science in Computer Science</div>
+      <div class="edu-school">Old Dominion University</div>
+      <div class="edu-date">August 2023 – May 2025 · Norfolk, VA</div>
+      <div class="edu-courses">
+        <strong>Coursework:</strong> Machine Learning · Natural Language Processing · Data Analytics &amp; Big Data · Data Visualization · Intro to Data Science &amp; Analytics · Database Concepts · Algorithms &amp; Data Structures · Web Programming · Cybersecurity Fundamentals · Computer Architecture
+        <br><br>
+        <strong>Award:</strong> Department of Computer Science Scholarship for Academic Excellence, Fall 2023
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">Bachelor of Engineering in Computer Science &amp; Engineering</div>
+      <div class="edu-school">R.M.K Engineering College · Anna University</div>
+      <div class="edu-date">July 2019 – April 2023 · Tamil Nadu, India</div>
+      <div class="edu-courses">
+        <strong>Coursework:</strong> Artificial Intelligence · Cloud Computing · Database Management Systems · Operating Systems · Software Engineering · Compiler Design · Distributed Systems · Computer Networks · Cryptography &amp; Network Security · Mobile Computing · Object Oriented Analysis &amp; Design · Information Retrieval Techniques · Human Computer Interaction
+      </div>
+    </div>
+  </div>
+
+  <!-- Certifications -->
+  <div style="margin-top: 2rem;">
+    <h3 style="font-size: 0.88rem; font-weight: 500; color: var(--ink4); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem;">Certifications</h3>
+    <div class="certs-row">
+      <span class="cert-pill">Learning Python · LinkedIn Learning</span>
+      <span class="cert-pill">Python Essential Training · LinkedIn Learning</span>
+      <span class="cert-pill">Programming Foundations: Algorithms · LinkedIn Learning</span>
+      <span class="cert-pill">Responsible Conduct of Research for Engineers</span>
+      <span class="cert-pill">Data or Specimens Only Research</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-strip">
+    <div>
+      <h2>Let's work together.</h2>
+      <p>Open to Data Analyst, Data Scientist, Data Engineer, Business Analyst, and AI/ML Engineer roles across the US.</p>
+    </div>
+    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+      <a href="mailto:gireeshmachowdary@gmail.com" class="btn-white">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        Email me
+      </a>
+      <a href="https://www.linkedin.com/in/gireeshma-kodali-bb578b1ab" target="_blank" class="btn-white">
+        LinkedIn ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Gireeshma Kodali</div>
+  <p>AI/ML &amp; Data Engineering Professional · Washington DC–Baltimore Area</p>
+  <div class="footer-links">
+    <a href="mailto:gireeshmachowdary@gmail.com">gireeshmachowdary@gmail.com</a>
+    <a href="tel:+15716040306">+1 (571) 604-0306</a>
+    <a href="https://www.linkedin.com/in/gireeshma-kodali-bb578b1ab" target="_blank">LinkedIn</a>
+  </div>
+  <p style="font-size: 0.78rem;">Built with ♡ and pure HTML/CSS · Hosted on GitHub Pages</p>
+</footer>
+
+</body>
+</html>
